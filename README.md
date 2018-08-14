@@ -1,3 +1,13 @@
+# ASP.NET Core Docker Deployment
+
+docker build --pull -t aspnetapp .
+
+docker login --username=andrewbuttigieg
+
+docker tag aspnetapp andrewbuttigieg/aspnetapp:v2
+
+docker push andrewbuttigieg/aspnetapp
+
 # ASP.NET Core Docker Sample
 
 This [sample Dockerfile](Dockerfile) demonstrates how to use ASP.NET Core and Docker together. The sample works with both Linux and Windows containers and can also be used without Docker. There are also instructions that demonstrate how to push the sample to [Azure Container Registry](../dotnetapp/push-image-to-acr.md) and test it with [Azure Container Instance](deploy-container-to-aci.md). You can [configure ASP.NET Core to use HTTPS with Docker](aspnetcore-docker-https.md).
