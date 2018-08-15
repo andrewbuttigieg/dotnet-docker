@@ -5,11 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using aspnetapp.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace aspnetapp.Controllers
 {
     public class HomeController : Controller
     {
+        private IConfiguration _configuration;
+ 
+        public HomeController(IConfiguration Configuration)
+        {
+            _configuration = Configuration;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -17,7 +25,7 @@ namespace aspnetapp.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = _configuration["AboutMessage"];;
 
             return View();
         }
